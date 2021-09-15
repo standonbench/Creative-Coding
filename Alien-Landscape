@@ -1,0 +1,28 @@
+function setup() {
+	simple();
+	background('black');
+	colourMode(HSB);
+	
+}
+
+function draw() {
+	
+	noStroke();
+	repeat(0, 500, 1, 200, 500, 1, landscape);
+}
+
+function landscape(x, y){
+
+	var x2 = x + (y/2);
+	var h = 200*noise(x/200, y/200); // dividing by 200 makes it low frequency noise 
+	h += 30 * noise(x/30, y/20); // high frequency smaller noise
+	var y2 = y - h+50
+	
+	var hue = (h + 180) %360;
+	var brightness = h * 0.75
+	
+	fill(hue, 80, brightness, 0.3);
+	circle(x2, y2, 2)
+	
+	
+	
